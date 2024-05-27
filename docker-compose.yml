@@ -1,0 +1,17 @@
+services:
+  explorer:
+    container_name: agrovoc-explorer
+    environment:
+      INPUT_SEARCH_ENDPOINT: http://agrovoc-server/search
+      INPUT_SPARQL_ENDPOINT: http://agrovoc-server/sparql
+    image: kos-kit/explorer
+    ports:
+      - "127.0.0.1:8080:80"
+  server:
+    container_name: agrovoc-server
+    image: kos-kit/server
+    init: true
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - ./release:/init:ro
