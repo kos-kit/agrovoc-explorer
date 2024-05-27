@@ -1,6 +1,8 @@
 services:
   explorer:
     container_name: agrovoc-explorer
+    depends_on:
+      - server
     environment:
       INPUT_SEARCH_ENDPOINT: http://agrovoc-server/search
       INPUT_SPARQL_ENDPOINT: http://agrovoc-server/sparql
